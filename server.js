@@ -9,6 +9,8 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
+app.use('/api/users', require('./routes/api/users'));
+
 const port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log(`Express is listening on port ${port}!`);
