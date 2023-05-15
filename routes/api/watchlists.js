@@ -9,4 +9,6 @@ router.post('/', watchlistsController.create);
 
 router.post('/:id', watchlistsController.update);
 
+router.delete('/:id', watchlistsController.delete);
+
 module.exports = router;
