@@ -2,12 +2,8 @@ const Watchlist = require('../../models/Watchlist');
 
 async function index(req, res) {
   try {
-    // USE WHEN FRONTEND IS DONE
-    // const user = await User.find({ username: req.user.username });
-    // const watchlists = await Watchlist.find({ user: user._id });
-    const watchlists = await Watchlist.find({
-      user: '64627008a38891a0afa7ff47',
-    });
+    const user = await User.find({ username: req.user.username });
+    const watchlists = await Watchlist.find({ user: user._id });
     res.json(watchlists);
   } catch (err) {
     res.status(400).json(err);
@@ -25,10 +21,8 @@ async function show(req, res) {
 
 async function create(req, res) {
   try {
-    // USE WHEN FRONTEND IS DONE
-    // const user = await User.find({ username: req.user.username });
-    // req.body.user = user._id;
-    req.body.user = '64627008a38891a0afa7ff47';
+    const user = await User.find({ username: req.user.username });
+    req.body.user = user._id;
     const watchlist = await Watchlist.create(req.body);
     res.json(watchlist);
   } catch (err) {
