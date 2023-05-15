@@ -1,8 +1,22 @@
 const Watchlist = require('../../models/Watchlist');
 
-async function index(req, res) {}
+async function index(req, res) {
+  try {
+    const watchlists = await Watchlist.find({});
+    res.json(watchlists);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
 
-async function show(req, res) {}
+async function show(req, res) {
+  try {
+    const watchlist = await Watchlist.findById(req.params.id);
+    res.json(watchlist);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
 
 async function create(req, res) {
   try {
