@@ -1,5 +1,9 @@
 const Watchlist = require('../../models/Watchlist');
 
+async function index(req, res) {}
+
+async function show(req, res) {}
+
 async function create(req, res) {
   try {
     const watchlist = await Watchlist.create(req.body);
@@ -53,6 +57,8 @@ async function deleteStock(req, res) {
 }
 
 module.exports = {
+  index,
+  show,
   create,
   update,
   delete: deleteWatchlist,
