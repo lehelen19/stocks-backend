@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(require('./config/checkToken'));
 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/watchlists', require('./routes/api/watchlists'));
 
 const port = process.env.PORT || 3001;
 
