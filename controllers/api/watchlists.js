@@ -12,6 +12,17 @@ async function create(req, res) {
 async function update(req, res) {
   try {
     const watchlist = await Watchlist.findById(req.params.id);
+    watchlist.name = req.body.name;
+    await watchlist.save();
+    res.json(watchlist);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function addStock(req, res) {
+  try {
+    const watchlist = await Watchlist.findById(req.params.id);
     watchlist.stocks.push(req.body.stock);
     await watchlist.save();
     res.json(watchlist);
@@ -29,4 +40,4 @@ async function deleteWatchlist(req, res) {
   }
 }
 
-module.exports = { create, update, delete: deleteWatchlist };
+module.exports = { create, update, delete: deleteWatchlist, addStock };

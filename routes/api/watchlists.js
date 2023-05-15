@@ -9,6 +9,8 @@ router.post('/', watchlistsController.create);
 
 router.post('/:id', watchlistsController.update);
 
+router.post('/:id/stocks', watchlistsController.addStock);
+
 router.delete('/:id', watchlistsController.delete);
 
 module.exports = router;
