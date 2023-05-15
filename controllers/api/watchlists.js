@@ -20,4 +20,13 @@ async function update(req, res) {
   }
 }
 
-module.exports = { create, update };
+async function deleteWatchlist(req, res) {
+  try {
+    await Watchlist.findByIdAndDelete(req.params.id);
+    res.json('Deleted watchlist');
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+module.exports = { create, update, delete: deleteWatchlist };
