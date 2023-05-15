@@ -20,6 +20,11 @@ async function show(req, res) {
 
 async function create(req, res) {
   try {
+    // USE WHEN FRONTEND IS DONE
+    // const user = await User.find({ username: req.user.username });
+    // req.body.user = user._id;
+    req.body.user = '64627008a38891a0afa7ff47';
+    console.log(req.body);
     const watchlist = await Watchlist.create(req.body);
     res.json(watchlist);
   } catch (err) {
