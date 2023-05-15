@@ -7,9 +7,11 @@ const router = express.Router();
 // add ensureLoggedIn when not testing
 router.post('/', watchlistsController.create);
 
+router.post('/:id/stocks', watchlistsController.addStock);
+
 router.post('/:id', watchlistsController.update);
 
-router.post('/:id/stocks', watchlistsController.addStock);
+router.delete('/:id/stocks', watchlistsController.deleteStock);
 
 router.delete('/:id', watchlistsController.delete);
 
