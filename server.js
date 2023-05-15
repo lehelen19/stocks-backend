@@ -13,7 +13,7 @@ app.use(require('./config/checkToken'));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/watchlists', require('./routes/api/watchlists'));
-app.use('/api/stocks', requre('./routes/api/stocks'));
+app.use('/api/stocks', require('./routes/api/stocks'));
 
 const port = process.env.PORT || 3001;
 
