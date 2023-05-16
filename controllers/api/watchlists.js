@@ -1,9 +1,10 @@
 const Watchlist = require('../../models/Watchlist');
+const User = require('../../models/User');
 
 async function index(req, res) {
   try {
     const user = await User.find({ username: req.user.username });
-    const watchlists = await Watchlist.find({ user: user._id });
+    const watchlists = await Watchlist.find({ user: user[0]._id });
     res.json(watchlists);
   } catch (err) {
     res.status(400).json(err);
@@ -22,7 +23,7 @@ async function show(req, res) {
 async function create(req, res) {
   try {
     const user = await User.find({ username: req.user.username });
-    req.body.user = user._id;
+    req.body.user = [user[0]._id];
     const watchlist = await Watchlist.create(req.body);
     res.json(watchlist);
   } catch (err) {

@@ -4,19 +4,18 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 const router = express.Router();
 
-// add ensureLoggedIn when not testing
-router.get('/', watchlistsController.index);
+router.get('/', ensureLoggedIn, watchlistsController.index);
 
-router.get('/:id', watchlistsController.show);
+router.get('/:id', ensureLoggedIn, watchlistsController.show);
 
-router.post('/', watchlistsController.create);
+router.post('/', ensureLoggedIn, watchlistsController.create);
 
-router.post('/:id/stocks', watchlistsController.addStock);
+router.post('/:id/stocks', ensureLoggedIn, watchlistsController.addStock);
 
-router.post('/:id', watchlistsController.update);
+router.post('/:id', ensureLoggedIn, watchlistsController.update);
 
-router.delete('/:id/stocks', watchlistsController.deleteStock);
+router.delete('/:id/stocks', ensureLoggedIn, watchlistsController.deleteStock);
 
-router.delete('/:id', watchlistsController.delete);
+router.delete('/:id', ensureLoggedIn, watchlistsController.delete);
 
 module.exports = router;

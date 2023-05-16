@@ -4,7 +4,6 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 const router = express.Router();
 
-// Add ensureLoggedIn once frontend complete
-router.get('/:symbol', stocksController.show);
+router.get('/:symbol', ensureLoggedIn, stocksController.show);
 
 module.exports = router;
