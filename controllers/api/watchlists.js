@@ -23,7 +23,7 @@ async function show(req, res) {
 async function create(req, res) {
   try {
     const user = await User.find({ username: req.user.username });
-    req.body.user = user._id;
+    req.body.user = [user[0]._id];
     const watchlist = await Watchlist.create(req.body);
     res.json(watchlist);
   } catch (err) {
