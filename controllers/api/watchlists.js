@@ -54,7 +54,11 @@ async function deleteWatchlist(req, res) {
 async function addStock(req, res) {
   try {
     const watchlist = await Watchlist.findById(req.params.id);
-    watchlist.stocks.push(req.body.stock);
+    const stock = req.body.stock;
+    if (watchlist.stocks.includes(stock)) {
+      throw new Error('Stock is already in watchlist.');
+    }
+    watchlist.stocks.push(stock);
     await watchlist.save();
     res.json(watchlist);
   } catch (err) {
