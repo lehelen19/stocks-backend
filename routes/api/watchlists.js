@@ -4,7 +4,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 const router = express.Router();
 
-router.get('/', ensureLoggedIn, watchlistsController.index);
+router.get('/', watchlistsController.index);
 
 router.get('/:id', ensureLoggedIn, watchlistsController.show);
 
