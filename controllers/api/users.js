@@ -18,6 +18,7 @@ function createJWT(user) {
 }
 
 async function login(req, res) {
+  console.log('hit login');
   try {
     const user = await User.findOne({ username: req.body.username });
     if (!user) throw new Error();
